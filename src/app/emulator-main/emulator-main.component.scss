@@ -1,0 +1,54 @@
+.flexContainer {
+  ///Create a container div for your application
+  margin: 0 auto;
+  border: 3px solid rgb(4, 0, 255);
+  display: flex;
+  flex-direction: row; ///It should stack child elements horizontally using flexbox
+  align-items: center;
+  max-width: 1200px; /// it should have a max width of 1200px
+  justify-content: center; /// it should be centered horizontally on the page
+  height: 600px;
+  align-items: stretch;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 200px;
+  padding: 8px 16px;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 4px;
+}
+
+.cardContainer {
+  // border: 3px dashed red;
+  display: flex;
+  gap: 8px;
+  justify-content: space-evenly;
+  flex-direction: row;
+  // height: 600px;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  // align-content: center;
+  // align-items: center;
+}
+
+.clockContainer {
+  text-align: center;
+  position: static;
+  width: 200px;
+  // height: 600px;
+}
+.announcerContainer {
+  text-align: center;
+  // height: 600px;
+  width: 1px;
+  flex-grow: 1;
+}
+.audienceContainer {
+  text-align: center;
+  // height: 600px;
+  width: 1px;
+  flex-grow: 1;
+}

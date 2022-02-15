@@ -1,0 +1,63 @@
+<div class="flexContainer">
+  <div class="buttonContainer">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="countdownButtonIsDisabled"
+      (click)="beginCountdown()"
+    >
+      Begin New Countdown
+    </button>
+
+    <button
+      mat-raised-button
+      [disabled]="advanceButtonIsDisabled"
+      (click)="advanceOneHour()"
+    >
+      Advance One Hour
+    </button>
+
+    <button
+      mat-raised-button
+      [disabled]="holdButtonIsDisabled"
+      (click)="hold()"
+    >
+      Hold
+    </button>
+
+    <button
+      mat-raised-button
+      [disabled]="continueButtonIsDisabled"
+      (click)="continueCountdown()"
+    >
+      Continue
+    </button>
+
+    <button
+      mat-raised-button
+      color="warn"
+      [disabled]="abortButtonIsDisabled"
+      (click)="abort()"
+    >
+      ABORT
+    </button>
+  </div>
+
+  <div class="cardContainer">
+    <mat-card class="clockContainer">
+      <mat-card-title> Countdown Clock </mat-card-title>
+      is counting: {{ isCounting }}
+      <app-countdown-clock></app-countdown-clock>
+    </mat-card>
+
+    <mat-card class="announcerContainer">
+      <mat-card-title> NASA Announcer </mat-card-title>
+      <app-nasa-announcer></app-nasa-announcer>
+    </mat-card>
+
+    <mat-card class="audienceContainer">
+      <mat-card-title> Audience </mat-card-title>
+      <app-audience></app-audience>
+    </mat-card>
+  </div>
+</div>
