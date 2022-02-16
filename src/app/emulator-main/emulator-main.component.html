@@ -1,9 +1,9 @@
 <div class="flexContainer">
-  <div class="buttonContainer">
+  <div class="buttonContainer" *ngIf="buttonState$ | async as buttonState">
     <button
       mat-raised-button
       color="primary"
-      [disabled]="countdownButtonIsDisabled"
+      [disabled]="buttonState.countdownButtonIsDisabled"
       (click)="beginCountdown()"
     >
       Begin New Countdown
@@ -11,7 +11,7 @@
 
     <button
       mat-raised-button
-      [disabled]="advanceButtonIsDisabled"
+      [disabled]="buttonState.advanceButtonIsDisabled"
       (click)="advanceOneHour()"
     >
       Advance One Hour
@@ -19,7 +19,7 @@
 
     <button
       mat-raised-button
-      [disabled]="holdButtonIsDisabled"
+      [disabled]="buttonState.holdButtonIsDisabled"
       (click)="hold()"
     >
       Hold
@@ -27,7 +27,7 @@
 
     <button
       mat-raised-button
-      [disabled]="continueButtonIsDisabled"
+      [disabled]="buttonState.continueButtonIsDisabled"
       (click)="continueCountdown()"
     >
       Continue
@@ -36,7 +36,7 @@
     <button
       mat-raised-button
       color="warn"
-      [disabled]="abortButtonIsDisabled"
+      [disabled]="buttonState.abortButtonIsDisabled"
       (click)="abort()"
     >
       ABORT
