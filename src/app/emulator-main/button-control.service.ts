@@ -26,11 +26,20 @@ export class ButtonControlService {
       }
       this.buttonState.next(this.currentButtonState);
     });
+
     this.ccs.isHolding$.subscribe((isHolding: boolean) => {
-      this.currentButtonState.holdButtonIsDisabled = isHolding;
-      this.currentButtonState.continueButtonIsDisabled = !isHolding;
+      if (this.currentButtonState.countdownButtonIsDisabled === true) {
+        this.currentButtonState.holdButtonIsDisabled = isHolding;
+        this.currentButtonState.continueButtonIsDisabled = !isHolding;
+      }
       console.log(`is Holding: ${isHolding}`);
       this.buttonState.next(this.currentButtonState);
+    });
+
+    this.ccs.remaining$.subscribe((val) => {
+      if (val <= 0) {
+        this.ccs.launch();
+      }
     });
   }
 
@@ -45,16 +54,19 @@ export class ButtonControlService {
   }
   advanceOneHour(): void {
     console.log('Advance button clicked.');
+    this.ccs.advanceOneHour();
   }
   hold(): void {
     console.log('hold button clicked.');
+    this.ccs.hold();
   }
   continueCountdown(): void {
     console.log('continue button clicked.');
+    this.ccs.continue();
   }
   abort(): void {
     console.log('Abort button clicked.');
     // cause isCounting to emit false.
-    this.ccs.stopCountdown();
+    this.ccs.abort();
   }
 }

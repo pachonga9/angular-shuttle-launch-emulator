@@ -11,6 +11,8 @@ import { ButtonState } from './button-state';
 })
 export class EmulatorMainComponent implements OnInit {
   isCounting: boolean = false;
+  isHolding: boolean = false;
+
   public readonly buttonState$: Observable<ButtonState>;
 
   constructor(
@@ -21,6 +23,10 @@ export class EmulatorMainComponent implements OnInit {
       this.isCounting = val;
     });
     this.buttonState$ = bcs.buttonState$;
+
+    this.ccs.isHolding$.subscribe((val) => {
+      this.isHolding = val;
+    });
   }
 
   // countdownButtonIsDisabled: boolean = false;
