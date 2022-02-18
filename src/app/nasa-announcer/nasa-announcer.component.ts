@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NasaAnnouncerService } from './nasa-announcer.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-nasa-announcer',
@@ -7,12 +8,16 @@ import { NasaAnnouncerService } from './nasa-announcer.service';
   styleUrls: ['./nasa-announcer.component.css'],
 })
 export class NasaAnnouncerComponent implements OnInit {
-  announcerMap: string[] = [];
+  public readonly announcementMap$: Observable<string>;
+
   constructor(private readonly nas: NasaAnnouncerService) {
-    this.nas.nasaAnnouncer$.subscribe((str) => {
-      this.announcerMap.push(str);
-    });
+    // this.nas.announcement$.subscribe((str) => {
+    //   this.announcementMap.push(str);
+    // });
+    this.announcementMap$ = this.nas.announcement$;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.nas.timeWatcher();
+  }
 }

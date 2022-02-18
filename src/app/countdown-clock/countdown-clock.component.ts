@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CountdownClockService } from './countdown-clock.service';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Duration, DateTime } from 'luxon';
 
 @Component({
   selector: 'app-countdown-clock',
@@ -8,17 +10,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./countdown-clock.component.css'],
 })
 export class CountdownClockComponent implements OnInit {
-  // clockMap: string[] = [];
   public readonly messageMap$: Observable<string>;
-  public readonly timeState$: Observable<number>;
+  public readonly timeState$: Observable<string>;
 
   constructor(private readonly ccs: CountdownClockService) {
-    // this.ccs.clock$.subscribe((str) => {
-    //   this.clockMap.push(str);
-    // });
     this.messageMap$ = this.ccs.messages$;
-
-    this.timeState$ = this.ccs.remaining$;
+    this.timeState$ = this.ccs.readableTime$;
   }
 
   ngOnInit(): void {}

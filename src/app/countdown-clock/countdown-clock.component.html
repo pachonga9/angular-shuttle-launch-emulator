@@ -1,10 +1,4 @@
-<!-- <mat-card-content *ngFor="let map of clockMap">
-  {{ map }}
-</mat-card-content> -->
 <mat-card-content *ngIf="messageMap$ | async as messageMap">
   {{ messageMap }}
 </mat-card-content>
-<mat-card-content *ngIf="timeState$ | async as timeState">
-  Time Left:
-  {{ timeState }}
-</mat-card-content>
+<mat-card-content> Time Left: {{ timeState$ | async }}</mat-card-content>

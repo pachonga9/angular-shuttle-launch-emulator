@@ -36,7 +36,7 @@ export class ButtonControlService {
       this.buttonState.next(this.currentButtonState);
     });
 
-    this.ccs.remaining$.subscribe((val) => {
+    this.ccs.millisRemaining$.subscribe((val) => {
       if (val <= 0) {
         this.ccs.launch();
       }
