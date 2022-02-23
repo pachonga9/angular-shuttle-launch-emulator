@@ -11,13 +11,8 @@ export class NasaAnnouncerComponent implements OnInit {
   public readonly announcementMap$: Observable<string>;
 
   constructor(private readonly nas: NasaAnnouncerService) {
-    // this.nas.announcement$.subscribe((str) => {
-    //   this.announcementMap.push(str);
-    // });
     this.announcementMap$ = this.nas.announcement$;
   }
 
-  ngOnInit(): void {
-    this.nas.timeWatcher();
-  }
+  ngOnInit(): void {}
 }

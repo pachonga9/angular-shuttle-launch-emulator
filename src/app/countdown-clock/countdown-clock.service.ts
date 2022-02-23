@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, Observable, pipe, interval } from 'rxjs';
-import { map, take, takeUntil, takeWhile } from 'rxjs/operators';
-import { Duration, DateTime } from 'luxon';
+import { map } from 'rxjs/operators';
+import { Duration } from 'luxon';
 
 @Injectable({
   providedIn: 'root',
@@ -9,15 +9,15 @@ import { Duration, DateTime } from 'luxon';
 export class CountdownClockService {
   constructor() {}
 
-  durationMillis = Duration.fromObject({ hours: 48 }).toMillis();
+  durationMillis = Duration.fromObject({ hours: 43 }).toMillis();
   advanceHour = Duration.fromObject({ hours: 1 }).toMillis();
   advanceSecond = Duration.fromObject({ seconds: 1 }).toMillis();
-  message: string = 'Hey, this is the clock.';
+  // message: string = 'Hey, this is the clock.';
   launchMessage: string = 'Liftoff';
 
   private readonly isCounting = new Subject<boolean>();
   private readonly isHolding = new BehaviorSubject<boolean>(false);
-  private readonly messages = new BehaviorSubject<string>(this.message);
+  // private readonly messages = new BehaviorSubject<string>(this.message);
   private readonly millisRemaining = new BehaviorSubject<number>(
     this.durationMillis
   );
@@ -48,9 +48,9 @@ export class CountdownClockService {
     );
   }
 
-  get messages$(): Observable<string> {
-    return this.messages.asObservable();
-  }
+  // get messages$(): Observable<string> {
+  //   return this.messages.asObservable();
+  // }
 
   get isCounting$(): Observable<boolean> {
     return this.isCounting.asObservable();
@@ -68,7 +68,7 @@ export class CountdownClockService {
     this.isCounting.next(true);
     this.isHolding.next(false);
     this.millisRemaining.next(this.durationMillis);
-    this.messages.next(this.message);
+    // this.messages.next(this.message);
     this.advanceOneSecond();
   }
 
@@ -98,6 +98,6 @@ export class CountdownClockService {
   launch(): void {
     this.isCounting.next(false);
     console.log('LIFTOFF!');
-    this.messages.next(this.launchMessage);
+    // this.messages.next(this.launchMessage);
   }
 }
