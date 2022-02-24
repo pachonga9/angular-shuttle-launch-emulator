@@ -29,17 +29,10 @@ export class EmulatorMainComponent implements OnInit {
     });
   }
 
-  // countdownButtonIsDisabled: boolean = false;
-  // advanceButtonIsDisabled: boolean = true;
-  // holdButtonIsDisabled: boolean = true;
-  // continueButtonIsDisabled: boolean = true;
-  // abortButtonIsDisabled: boolean = true;
-
   beginCountdown(): void {
     console.log(`before: ${this.isCounting} should say FALSE.`);
     this.bcs.beginCountdown();
     console.log(`after: ${this.isCounting} should say TRUE.`);
-    // this.checkButtons();
   }
   advanceOneHour(): void {
     this.bcs.advanceOneHour();
@@ -53,18 +46,7 @@ export class EmulatorMainComponent implements OnInit {
   abort(): void {
     this.bcs.abort();
     console.log(this.isCounting);
-    // this.checkButtons();
   }
-
-  // checkButtons(): void {
-  //   if (this.isCounting) {
-  //     this.countdownButtonIsDisabled = true;
-  //     this.abortButtonIsDisabled = false;
-  //   } else if (this.isCounting === false) {
-  //     this.countdownButtonIsDisabled = false;
-  //     this.abortButtonIsDisabled = true;
-  //   }
-  // }
 
   ngOnInit(): void {}
 }

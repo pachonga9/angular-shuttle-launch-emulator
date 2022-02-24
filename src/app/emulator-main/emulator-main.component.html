@@ -1,47 +1,62 @@
 <div class="flexContainer">
-  <div class="buttonContainer" *ngIf="buttonState$ | async as buttonState">
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="buttonState.countdownButtonIsDisabled"
-      (click)="beginCountdown()"
-    >
-      Begin New Countdown
-    </button>
+  <mat-drawer-container class="mat-drawer-container" autosize>
+    <mat-drawer #drawer class="mat-drawer" mode="side">
+      <div class="buttonContainer" *ngIf="buttonState$ | async as buttonState">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="buttonState.countdownButtonIsDisabled"
+          (click)="beginCountdown()"
+        >
+          Begin New Countdown
+        </button>
 
-    <button
-      mat-raised-button
-      [disabled]="buttonState.advanceButtonIsDisabled"
-      (click)="advanceOneHour()"
-    >
-      Advance One Hour
-    </button>
+        <button
+          mat-raised-button
+          [disabled]="buttonState.advanceButtonIsDisabled"
+          (click)="advanceOneHour()"
+        >
+          Advance One Hour
+        </button>
 
-    <button
-      mat-raised-button
-      [disabled]="buttonState.holdButtonIsDisabled"
-      (click)="hold()"
-    >
-      Hold
-    </button>
+        <button
+          mat-raised-button
+          [disabled]="buttonState.holdButtonIsDisabled"
+          (click)="hold()"
+        >
+          Hold
+        </button>
 
-    <button
-      mat-raised-button
-      [disabled]="buttonState.continueButtonIsDisabled"
-      (click)="continueCountdown()"
-    >
-      Continue
-    </button>
+        <button
+          mat-raised-button
+          [disabled]="buttonState.continueButtonIsDisabled"
+          (click)="continueCountdown()"
+        >
+          Continue
+        </button>
 
-    <button
-      mat-raised-button
-      color="warn"
-      [disabled]="buttonState.abortButtonIsDisabled"
-      (click)="abort()"
-    >
-      ABORT
-    </button>
-  </div>
+        <button
+          mat-raised-button
+          color="warn"
+          [disabled]="buttonState.abortButtonIsDisabled"
+          (click)="abort()"
+        >
+          ABORT
+        </button>
+      </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+      <button
+        type="button"
+        mat-flat-button
+        color="accent"
+        (click)="drawer.toggle()"
+      >
+        controls
+      </button>
+    </div>
+  </mat-drawer-container>
 
   <div class="cardContainer">
     <mat-card class="clockContainer">

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, Observable, pipe, interval } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, takeUntil, takeWhile } from 'rxjs/operators';
 import { Duration } from 'luxon';
 
 @Injectable({
@@ -12,12 +12,10 @@ export class CountdownClockService {
   durationMillis = Duration.fromObject({ hours: 43 }).toMillis();
   advanceHour = Duration.fromObject({ hours: 1 }).toMillis();
   advanceSecond = Duration.fromObject({ seconds: 1 }).toMillis();
-  // message: string = 'Hey, this is the clock.';
   launchMessage: string = 'Liftoff';
 
   private readonly isCounting = new Subject<boolean>();
-  private readonly isHolding = new BehaviorSubject<boolean>(false);
-  // private readonly messages = new BehaviorSubject<string>(this.message);
+  private readonly isHolding = new Subject<boolean>();
   private readonly millisRemaining = new BehaviorSubject<number>(
     this.durationMillis
   );
@@ -48,10 +46,6 @@ export class CountdownClockService {
     );
   }
 
-  // get messages$(): Observable<string> {
-  //   return this.messages.asObservable();
-  // }
-
   get isCounting$(): Observable<boolean> {
     return this.isCounting.asObservable();
   }
@@ -61,14 +55,13 @@ export class CountdownClockService {
   }
 
   get millisRemaining$(): Observable<number> {
-    return this.millisRemaining.asObservable(); ///I'd need to pipe here I think.
+    return this.millisRemaining.asObservable();
   }
 
   beginCountdown(): void {
     this.isCounting.next(true);
     this.isHolding.next(false);
     this.millisRemaining.next(this.durationMillis);
-    // this.messages.next(this.message);
     this.advanceOneSecond();
   }
 
@@ -78,13 +71,17 @@ export class CountdownClockService {
 
   advanceOneSecond(): void {
     const timer$ = interval(1000);
-    timer$.subscribe((x) =>
-      this.millisRemaining.next(this.millisRemaining.value - this.advanceSecond)
-    );
+
+    timer$.pipe(takeUntil(this.isHolding)).subscribe(() => {
+      this.millisRemaining.next(
+        this.millisRemaining.value - this.advanceSecond
+      );
+    });
   }
 
   abort(): void {
     this.isCounting.next(false);
+    this.isHolding.next(true);
   }
 
   hold(): void {
@@ -93,11 +90,11 @@ export class CountdownClockService {
 
   continue(): void {
     this.isHolding.next(false);
+    this.advanceOneSecond();
   }
 
   launch(): void {
     this.isCounting.next(false);
     console.log('LIFTOFF!');
-    // this.messages.next(this.launchMessage);
   }
 }

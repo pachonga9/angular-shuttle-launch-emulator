@@ -74,35 +74,3 @@ export class NasaAnnouncerService {
     return map;
   };
 }
-
-//   announcement = new BehaviorSubject<string>(this.eventList[0]);
-
-//   // private readonly messages = new BehaviorSubject<string[]>(this.message);
-
-//   get announcement$(): Observable<string> {
-//     return this.announcement.asObservable();
-//   }
-
-//   ///if time is this push a message to an array.
-//   timeWatcher(): void {
-//     this.time.subscribe((val) => {
-//       if (val === '47:59:58') {
-//         this.announcement.next(this.eventList[1]);
-//       } else if (val === '47:59:55') {
-//         this.announcement.next(this.eventList[2]);
-//       } else if (val === '47:59:52') {
-//         this.announcement.next(this.eventList[3]);
-//       } else if (val === '47:59:48') {
-//         this.announcement.next(this.eventList[4]);
-//       } else if (val === '47:59:43') {
-//         this.announcement.next(this.eventList[5]);
-//       } else if (val === '47:59:40') {
-//         this.announcement.next(this.eventList[6]);
-//       } else if (val === '47:59:37') {
-//         this.announcement.next(this.eventList[7]);
-//       } else if (val === '47:59:35') {
-//         this.announcement.next(this.eventList[8]);
-//       }
-//     });
-//   }
-// }

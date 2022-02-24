@@ -1,4 +1,6 @@
-<!-- <mat-card-content *ngIf="messageMap$ | async as messageMap">
-  {{ messageMap }}
-</mat-card-content> -->
-<mat-card-content> Time Left: {{ timeState$ | async }}</mat-card-content>
+<mat-card-content class="timeState">
+  Time Left:
+  <h2 class="timeDisplay">
+    {{ timeState$ | async }}
+  </h2>
+</mat-card-content>

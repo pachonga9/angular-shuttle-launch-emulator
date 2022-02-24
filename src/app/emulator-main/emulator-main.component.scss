@@ -1,14 +1,21 @@
 .flexContainer {
-  ///Create a container div for your application
+  background-color: orange;
   margin: 0 auto;
-  border: 3px solid rgb(4, 0, 255);
+  border: 3px solid orange;
   display: flex;
-  flex-direction: row; ///It should stack child elements horizontally using flexbox
+  flex-direction: row;
   align-items: center;
-  max-width: 1200px; /// it should have a max width of 1200px
-  justify-content: center; /// it should be centered horizontally on the page
+  max-width: 1200px;
+  justify-content: center;
   height: 600px;
   align-items: stretch;
+}
+
+.mat-drawer-container {
+  background-color: rgb(78, 83, 105);
+}
+.mat-drawer {
+  background-color: rgb(132, 154, 172);
 }
 
 .buttonContainer {
@@ -22,33 +29,32 @@
 }
 
 .cardContainer {
-  // border: 3px dashed red;
   display: flex;
   gap: 8px;
   justify-content: space-evenly;
   flex-direction: row;
-  // height: 600px;
   flex-wrap: nowrap;
   flex-grow: 1;
-  // align-content: center;
-  // align-items: center;
 }
 
 .clockContainer {
+  background-color: black;
+  color: white;
   text-align: center;
   position: static;
   width: 200px;
-  // height: 600px;
 }
 .announcerContainer {
+  background-color: black;
+  color: white;
   text-align: center;
-  // height: 600px;
   width: 1px;
   flex-grow: 1;
 }
 .audienceContainer {
+  background-color: black;
+  color: white;
   text-align: center;
-  // height: 600px;
   width: 1px;
   flex-grow: 1;
 }
