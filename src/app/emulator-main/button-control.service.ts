@@ -22,6 +22,7 @@ export class ButtonControlService {
         this.currentButtonState.abortButtonIsDisabled = true;
         this.currentButtonState.holdButtonIsDisabled = true;
         this.currentButtonState.countdownButtonIsDisabled = false;
+        this.currentButtonState.continueButtonIsDisabled = true;
         this.currentButtonState.advanceButtonIsDisabled = true;
       }
       this.buttonState.next(this.currentButtonState);

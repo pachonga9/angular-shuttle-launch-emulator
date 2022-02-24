@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, Observable, pipe, interval } from 'rxjs';
+import {
+  BehaviorSubject,
+  Subject,
+  Observable,
+  pipe,
+  interval,
+  race,
+} from 'rxjs';
 import { map, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { Duration, DateTime } from 'luxon';
 
@@ -55,8 +62,9 @@ export class CountdownClockService {
 
   advanceOneSecond(): void {
     const timer$ = interval(1000);
+    const pause$ = race(this.isHolding$, this.isCounting$);
 
-    timer$.pipe(takeUntil(this.isHolding)).subscribe(() => {
+    timer$.pipe(takeUntil(pause$)).subscribe(() => {
       this.millisRemaining.next(
         this.millisRemaining.value - this.advanceSecond
       );
@@ -65,8 +73,7 @@ export class CountdownClockService {
 
   abort(): void {
     this.isCounting.next(false);
-    this.isHolding.next(true);
-    ///this needs to just reset the whole thing. Reset the behavior subjects to their initial values of nothing.
+    this.isHolding.next(false);
   }
 
   hold(): void {
