@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, Observable, pipe, interval } from 'rxjs';
-import { map, takeUntil, takeWhile } from 'rxjs/operators';
-import { Duration } from 'luxon';
+import { map, takeUntil, takeWhile, tap } from 'rxjs/operators';
+import { Duration, DateTime } from 'luxon';
 
 @Injectable({
   providedIn: 'root',
@@ -23,25 +23,9 @@ export class CountdownClockService {
   get readableTime$(): Observable<string> {
     return this.millisRemaining$.pipe(
       map((val) => {
-        console.log(val);
-        const duration = Duration.fromMillis(val);
-        console.log(duration);
-        const result = duration
-          .shiftTo('hours', 'minutes', 'seconds')
-          .toString();
-        console.log(result);
-        return result;
-      }),
-      map((val) => {
-        console.log(`from tap: ${val}`);
-        const slicedVal = val.slice(2);
-        console.log(slicedVal);
-        const replacedVal = slicedVal
-          .replace('H', ':')
-          .replace('M', ':')
-          .replace('S', '');
-        console.log(replacedVal);
-        return replacedVal;
+        const x = Duration.fromMillis(val);
+        const convertedTime = x.toFormat('T-hh:mm:ss');
+        return convertedTime;
       })
     );
   }
@@ -82,6 +66,7 @@ export class CountdownClockService {
   abort(): void {
     this.isCounting.next(false);
     this.isHolding.next(true);
+    ///this needs to just reset the whole thing. Reset the behavior subjects to their initial values of nothing.
   }
 
   hold(): void {
