@@ -44,6 +44,11 @@ export class ButtonControlService {
     });
   }
 
+  speedRateChanger(val: number) {
+    console.log(`BCS: I got ${val} from the emulator component.`);
+    this.ccs.changeSpeed(val);
+  }
+
   get buttonState$(): Observable<ButtonState> {
     return this.buttonState.asObservable();
   }
@@ -57,6 +62,7 @@ export class ButtonControlService {
     console.log('Advance button clicked.');
     this.ccs.advanceOneHour();
   }
+
   hold(): void {
     console.log('hold button clicked.');
     this.ccs.hold();

@@ -1,3 +1,4 @@
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CountdownClockService } from '../countdown-clock/countdown-clock.service';
@@ -29,6 +30,40 @@ export class EmulatorMainComponent implements OnInit {
     });
   }
 
+  formatLabel(value: number) {
+    switch (value) {
+      case 0:
+        return '1x';
+      case 1:
+        return '2x';
+      case 2:
+        return '10x';
+      case 3:
+        return '1000x';
+      // default:
+      //   return 'blah';
+    }
+    return value;
+  }
+
+  onChangeRange(changeVal: number) {
+    switch (changeVal) {
+      case 0:
+        this.bcs.speedRateChanger(1);
+        return 1;
+      case 1:
+        this.bcs.speedRateChanger(2);
+        return 2;
+      case 2:
+        this.bcs.speedRateChanger(10);
+        return 10;
+      case 3:
+        this.bcs.speedRateChanger(1000);
+        return 1000;
+    }
+    return changeVal;
+  }
+
   beginCountdown(): void {
     console.log(`before: ${this.isCounting} should say FALSE.`);
     this.bcs.beginCountdown();
@@ -37,6 +72,7 @@ export class EmulatorMainComponent implements OnInit {
   advanceOneHour(): void {
     this.bcs.advanceOneHour();
   }
+
   hold(): void {
     this.bcs.hold();
   }

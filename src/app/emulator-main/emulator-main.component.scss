@@ -37,6 +37,21 @@
   flex-grow: 1;
 }
 
+.advanceTimeDiv {
+  border: 6px ridge rgb(110, 108, 133);
+  text-align: center;
+}
+
+.sliderAndLabelDiv {
+  border: 3px inset orange;
+  margin: 15px;
+  background-color: antiquewhite;
+}
+
+.slider {
+  min-width: 180px;
+}
+
 .clockContainer {
   background-color: black;
   color: white;

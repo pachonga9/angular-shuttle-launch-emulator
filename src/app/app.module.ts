@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CountdownClockComponent } from './countdown-clock/countdown-clock.component';
 import { NasaAnnouncerComponent } from './nasa-announcer/nasa-announcer.component';
 import { AudienceComponent } from './audience/audience.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AudienceComponent } from './audience/audience.component';
     MatButtonModule,
     MatCardModule,
     MatSidenavModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
