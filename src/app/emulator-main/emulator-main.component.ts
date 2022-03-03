@@ -50,16 +50,16 @@ export class EmulatorMainComponent implements OnInit {
     switch (changeVal) {
       case 0:
         this.bcs.speedRateChanger(1);
-        return 1;
+        break;
       case 1:
         this.bcs.speedRateChanger(2);
-        return 2;
+        break;
       case 2:
         this.bcs.speedRateChanger(10);
-        return 10;
+        break;
       case 3:
         this.bcs.speedRateChanger(1000);
-        return 1000;
+        break;
     }
     return changeVal;
   }

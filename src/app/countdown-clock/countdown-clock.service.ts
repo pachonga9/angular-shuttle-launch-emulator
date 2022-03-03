@@ -45,9 +45,7 @@ export class CountdownClockService {
   }
 
   changeSpeed(val: number): void {
-    // this.speedRate.next(val);
-    this.speedRate.next(1000 / val);
-    // this.advanceOneSecond(); this starts too many countdowns at once...
+    this.speedRate.next(val);
   }
 
   beginCountdown(): void {
@@ -74,21 +72,9 @@ export class CountdownClockService {
         takeUntil(pause$)
       )
       .subscribe(() => {
-        const currentSpeedRate = this.speedRate.getValue();
-        const millisToRemove = 1000 / currentSpeedRate;
         const currentMillis = this.millisRemaining.getValue();
-        this.millisRemaining.next(currentMillis - millisToRemove);
+        this.millisRemaining.next(currentMillis - 1000);
       });
-
-    // const rate$ = this.speedRate$
-    // const timer$ = interval(1000 / rate$);
-    // const pause$ = race(this.isHolding$, this.isCounting$);
-
-    // timer$.pipe(takeUntil(pause$)).subscribe(() => {
-    //   this.millisRemaining.next(
-    //     this.millisRemaining.value - this.advanceSecond
-    //   );
-    // });
   }
 
   abort(): void {
