@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Duration } from 'luxon';
 import { Observable, ReplaySubject } from 'rxjs';
-import { distinct } from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators';
 import { CountdownClockService } from '../countdown-clock/countdown-clock.service';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class NasaAnnouncerService {
   }
 
   get announcement$(): Observable<string> {
-    return this.announcement.pipe(distinct());
+    return this.announcement.pipe(distinctUntilChanged());
   }
 
   evaluateTime = (millisRemaining: number): void => {
