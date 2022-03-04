@@ -13,7 +13,6 @@ export class CountdownClockService {
   advanceHour = Duration.fromObject({ hours: 1 }).toMillis();
   advanceSecond = Duration.fromObject({ seconds: 1 }).toMillis();
   launchMessage: string = 'Liftoff';
-  // speedRate: number = 1;
 
   private readonly speedRate = new BehaviorSubject<number>(1);
   private readonly isCounting = new Subject<boolean>();
@@ -53,6 +52,8 @@ export class CountdownClockService {
     this.isHolding.next(false);
     this.millisRemaining.next(this.durationMillis);
     this.advanceOneSecond();
+
+    this.millisRemaining$.subscribe(this.evaluateTime);
   }
 
   advanceOneHour(): void {
@@ -95,4 +96,29 @@ export class CountdownClockService {
     this.isCounting.next(false);
     console.log('LIFTOFF!');
   }
+
+  //// hold logic; subscribe to the time remaining, pass it to a function that will evaluate time...
+  //// when the evaluator sees the time hits a threshold. Activate the hold as if the hold button was clicked...
+
+  evaluateTime = (millisRemaining: number): void => {
+    if (millisRemaining === Duration.fromObject({ hours: 27 }).toMillis()) {
+      this.hold();
+    } else if (
+      millisRemaining === Duration.fromObject({ hours: 19 }).toMillis()
+    ) {
+      this.hold();
+    } else if (
+      millisRemaining === Duration.fromObject({ hours: 11 }).toMillis()
+    ) {
+      this.hold();
+    } else if (
+      millisRemaining === Duration.fromObject({ hours: 6 }).toMillis()
+    ) {
+      this.hold();
+    } else if (
+      millisRemaining === Duration.fromObject({ hours: 3 }).toMillis()
+    ) {
+      this.hold();
+    }
+  };
 }

@@ -1,4 +1,3 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CountdownClockService } from '../countdown-clock/countdown-clock.service';
@@ -40,8 +39,6 @@ export class EmulatorMainComponent implements OnInit {
         return '10x';
       case 3:
         return '1000x';
-      // default:
-      //   return 'blah';
     }
     return value;
   }
