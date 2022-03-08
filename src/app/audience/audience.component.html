@@ -1,3 +1,5 @@
-<mat-card-content *ngFor="let map of audienceMap">
-  {{ map }}
+<mat-card-content class="" audienceState>
+  <p class="audienceDisplay">
+    {{ audienceState$ | async }}
+  </p>
 </mat-card-content>

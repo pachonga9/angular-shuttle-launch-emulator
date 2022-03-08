@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AudienceService } from './audience.service';
 
 @Component({
@@ -7,11 +8,9 @@ import { AudienceService } from './audience.service';
   styleUrls: ['./audience.component.css'],
 })
 export class AudienceComponent implements OnInit {
-  audienceMap: string[] = [];
+  public readonly audienceState$: Observable<string>;
   constructor(private readonly as: AudienceService) {
-    this.as.audience$.subscribe((str) => {
-      this.audienceMap.push(str);
-    });
+    this.audienceState$ = this.as.reaction$;
   }
 
   ngOnInit(): void {}
