@@ -39,7 +39,7 @@ export class AudienceService {
           }
 
           this.reaction.next(defaultValue);
-          return iif(() => isCounting, interval(5000));
+          return iif(() => isCounting, interval(6000));
         })
       )
       .subscribe(() => {
@@ -99,11 +99,16 @@ export class AudienceService {
     `Dang, I think I left my ear muffs in the car.`,
     `Probably should've had something to eat before waiting all this time.`,
     `I. CAN'T. WAIT.`,
-    `I remember where I was when we heard that the...actually...nevermind.`,
+    `I remember where I was when we heard that the... actually... nevermind.`,
     `This is gonna be so cool!`,
     `Far out, maaaan. Faaaar ooout.`,
     `Have you ever been to a launch? It's gonna blow your mind.`,
     `Take my picture like I'm holding up the rocket, dad!`,
     `Let's hope they don't scrub it. We drove a long way to see this.`,
+    `I was about your age when I went to my first launch.`,
+    `First launch?`,
+    `It's going aaaaaall the way to space!`,
+    `I never thought I'd actually get to see a launch in person!`,
+    `Rad.`,
   ];
 }

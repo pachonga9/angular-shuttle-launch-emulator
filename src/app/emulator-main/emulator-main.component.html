@@ -63,17 +63,6 @@
         </button>
       </div>
     </mat-drawer>
-
-    <div class="example-sidenav-content">
-      <button
-        type="button"
-        mat-flat-button
-        color="accent"
-        (click)="drawer.toggle()"
-      >
-        controls
-      </button>
-    </div>
   </mat-drawer-container>
 
   <div class="cardContainer">
@@ -83,6 +72,16 @@
       <br />
       is holding: {{ isHolding }}
       <app-countdown-clock></app-countdown-clock>
+      <div class="sidenav-content">
+        <button
+          type="button"
+          mat-flat-button
+          color="accent"
+          (click)="drawer.toggle()"
+        >
+          controls
+        </button>
+      </div>
     </mat-card>
 
     <mat-card class="announcerContainer">
