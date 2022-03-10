@@ -1,3 +1,20 @@
+// @media only screen and (max-width: 600px) {
+//   .flexContainer {
+//     // background-color: orange;
+//     background-color: aqua;
+//     margin: 0 auto;
+//     border: 3px solid rgb(255, 0, 0);
+//     display: flex;
+//     flex-direction: row;
+//     // flex-direction: column;
+//     align-items: center;
+//     max-width: 1200px;
+//     justify-content: center;
+//     height: 600px;
+//     align-items: stretch;
+//   }
+// }
+
 .flexContainer {
   background-color: orange;
   margin: 0 auto;
@@ -9,6 +26,15 @@
   justify-content: center;
   height: 600px;
   align-items: stretch;
+}
+
+.cardContainer {
+  display: flex;
+  gap: 8px;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-grow: 1;
 }
 
 .mat-drawer-container {
@@ -28,15 +54,6 @@
   gap: 4px;
 }
 
-.cardContainer {
-  display: flex;
-  gap: 8px;
-  justify-content: space-evenly;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-}
-
 .advanceTimeDiv {
   border: 6px ridge rgb(110, 108, 133);
   text-align: center;
@@ -48,9 +65,9 @@
   background-color: antiquewhite;
 }
 
-.slider {
-  min-width: 180px;
-}
+// .slider { /// i dont think this does anything
+//   min-width: 180px;
+// }
 
 .clockContainer {
   background-color: black;

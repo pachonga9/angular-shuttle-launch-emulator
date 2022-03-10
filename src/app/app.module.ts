@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { EmulatorMainComponent } from './emulator-main/emulator-main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +10,9 @@ import { CountdownClockComponent } from './countdown-clock/countdown-clock.compo
 import { NasaAnnouncerComponent } from './nasa-announcer/nasa-announcer.component';
 import { AudienceComponent } from './audience/audience.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { ControlsComponent } from './controls/controls.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { MatSliderModule } from '@angular/material/slider';
     CountdownClockComponent,
     NasaAnnouncerComponent,
     AudienceComponent,
+    ControlsComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,8 @@ import { MatSliderModule } from '@angular/material/slider';
     MatCardModule,
     MatSidenavModule,
     MatSliderModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

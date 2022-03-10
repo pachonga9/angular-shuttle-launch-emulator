@@ -1,97 +1,18 @@
-<div class="flexContainer">
-  <mat-drawer-container class="mat-drawer-container" autosize>
-    <mat-drawer #drawer class="mat-drawer" mode="side">
-      <div class="buttonContainer" *ngIf="buttonState$ | async as buttonState">
-        <button
-          mat-raised-button
-          color="primary"
-          [disabled]="buttonState.countdownButtonIsDisabled"
-          (click)="beginCountdown()"
-        >
-          Begin New Countdown
-        </button>
-        <div id="advanceTimeDiv" class="advanceTimeDiv">
-          <button
-            mat-raised-button
-            [disabled]="buttonState.advanceButtonIsDisabled"
-            (click)="advanceOneHour()"
-          >
-            Advance One Hour
-          </button>
-
-          <div id="ffSliderDiv" class="ffSliderDiv">
-            <div class="sliderAndLabelDiv">
-              <p>Speed Adjust</p>
-              <mat-slider
-                thumbLabel
-                #timeSlider
-                [displayWith]="formatLabel"
-                tickInterval="4"
-                step="1"
-                min="0"
-                max="3"
-                aria-label="units"
-                (change)="onChangeRange(timeSlider.value)"
-              ></mat-slider>
-            </div>
-          </div>
-        </div>
-
-        <button
-          mat-raised-button
-          [disabled]="buttonState.holdButtonIsDisabled"
-          (click)="hold()"
-        >
-          Hold
-        </button>
-
-        <button
-          mat-raised-button
-          [disabled]="buttonState.continueButtonIsDisabled"
-          (click)="continueCountdown()"
-        >
-          Continue
-        </button>
-
-        <button
-          mat-raised-button
-          color="warn"
-          [disabled]="buttonState.abortButtonIsDisabled"
-          (click)="abort()"
-        >
-          ABORT
-        </button>
-      </div>
-    </mat-drawer>
-  </mat-drawer-container>
-
+<mat-toolbar>
+  <button mat-icon-button (click)="controls.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <p style="padding-left: 8px">shuttle emulator</p>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #controls mode="side" opened="true">
+    <app-controls></app-controls>
+  </mat-sidenav>
   <div class="cardContainer">
-    <mat-card class="clockContainer">
-      <mat-card-title> Countdown Clock </mat-card-title>
-      is counting: {{ isCounting }}
-      <br />
-      is holding: {{ isHolding }}
-      <app-countdown-clock></app-countdown-clock>
-      <div class="sidenav-content">
-        <button
-          type="button"
-          mat-flat-button
-          color="accent"
-          (click)="drawer.toggle()"
-        >
-          controls
-        </button>
-      </div>
-    </mat-card>
+    <app-countdown-clock class="countdown-card"></app-countdown-clock>
 
-    <mat-card class="announcerContainer">
-      <mat-card-title> NASA Announcer </mat-card-title>
-      <app-nasa-announcer></app-nasa-announcer>
-    </mat-card>
+    <app-nasa-announcer class="announcer-card"></app-nasa-announcer>
 
-    <mat-card class="audienceContainer">
-      <mat-card-title> Audience </mat-card-title>
-      <app-audience></app-audience>
-    </mat-card>
+    <app-audience class="audience-card"></app-audience>
   </div>
-</div>
+</mat-sidenav-container>
