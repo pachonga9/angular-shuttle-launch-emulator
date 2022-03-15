@@ -1,5 +1,8 @@
 module.exports = {
-  content: ["./src/**/*.{html,ts}"],
+  purge: {
+    enabled: process?.argv?.indexOf("build") !== -1,
+    content: ["./src/**/*.html", "./src/**/*.ts"],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
