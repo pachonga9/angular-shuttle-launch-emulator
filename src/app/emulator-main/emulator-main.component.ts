@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { ViewportSize } from '../viewport/viewport-size';
 import { ViewportService } from '../viewport/viewport.service';
 
@@ -8,13 +9,29 @@ import { ViewportService } from '../viewport/viewport.service';
   templateUrl: './emulator-main.component.html',
   styleUrls: ['./emulator-main.component.scss'],
 })
-export class EmulatorMainComponent implements OnInit {
+export class EmulatorMainComponent implements OnInit, OnDestroy {
+  private readonly ngUnsubscribe = new Subject<void>();
   viewport$: Observable<ViewportSize>;
   ViewportSize = ViewportSize;
+  isOpen = true;
 
   constructor(private readonly vps: ViewportService) {
     this.viewport$ = vps.viewport$;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.vps.viewport$
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((val: ViewportSize) => {
+        console.log(val);
+        if (val >= ViewportSize.MD) {
+          this.isOpen = true;
+          console.log('jfkjhf');
+        }
+      });
+  }
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
 }

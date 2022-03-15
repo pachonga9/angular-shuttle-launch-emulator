@@ -3,39 +3,32 @@
     Countdown Clock
   </mat-card-title>
   <mat-card-content class="timeState text-center">
-    <div class="flex content-start justify-center gap-4">
-      <div
-        class="text-indigo-300 border-solid border-2 border-blue-400 p-3 m-2"
-      >
-        is counting:
+    <div class="flex gap-2 mb-2">
+      <div class="flex-1 text-indigo-300 p-1 bg-gray-800 rounded-md">
         <div
           [ngClass]="{
-            'text-red-600': !isCounting,
-            'text-green-500': isCounting
+            'text-red-500': !isCounting,
+            'text-green-400': isCounting
           }"
         >
-          {{ isCounting }}
+          {{ isCounting ? "IS COUNTING" : "NOT COUNTING" }}
         </div>
       </div>
 
-      <div
-        class="text-indigo-300 border-solid border-2 border-blue-400 p-3 m-2"
-      >
-        is holding:
+      <div class="flex-1 text-indigo-300 p-1 bg-gray-800 rounded-md">
         <div
           [ngClass]="{
-            'text-red-600': !isHolding,
-            'text-green-500': isHolding
+            'text-red-500': !isHolding,
+            'text-green-400': isHolding
           }"
         >
-          {{ isHolding }}
+          {{ isHolding ? "IS HOLDING" : "NOT HOLDING" }}
         </div>
       </div>
     </div>
 
-    Time Left:
-    <h2 class="timeDisplay">
+    <div class="timeDisplay rounded-md bg-gray-800">
       {{ timeState$ | async }}
-    </h2>
+    </div>
   </mat-card-content>
 </mat-card>

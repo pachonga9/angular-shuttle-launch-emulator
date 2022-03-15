@@ -14,6 +14,7 @@ import { ControlsComponent } from './controls/controls.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { ViewportModule } from './viewport/viewport.module';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ViewportModule } from './viewport/viewport.module';
     MatToolbarModule,
     MatIconModule,
     ViewportModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

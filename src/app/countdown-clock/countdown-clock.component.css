@@ -3,6 +3,8 @@
 }
 
 .timeDisplay {
-  background-color: rgb(63, 62, 62);
   color: rgb(255, 219, 58);
+  font-family: "Orbitron", sans-serif;
+  font-size: xx-large;
+  text-shadow: 2px 0px 0px orangered;
 }
