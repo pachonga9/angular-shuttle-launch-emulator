@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CountdownClockService } from '../countdown-clock/countdown-clock.service';
-import { ButtonControlService } from './button-control.service';
-import { ButtonState } from './button-state';
+import { ViewportSize } from '../viewport/viewport-size';
+import { ViewportService } from '../viewport/viewport.service';
 
 @Component({
   selector: 'app-emulator-main',
@@ -10,75 +9,11 @@ import { ButtonState } from './button-state';
   styleUrls: ['./emulator-main.component.scss'],
 })
 export class EmulatorMainComponent implements OnInit {
-  isCounting: boolean = false;
-  isHolding: boolean = false;
+  viewport$: Observable<ViewportSize>;
+  ViewportSize = ViewportSize;
 
-  public readonly buttonState$: Observable<ButtonState>;
-
-  constructor(
-    private readonly bcs: ButtonControlService,
-    private readonly ccs: CountdownClockService
-  ) {
-    this.ccs.isCounting$.subscribe((val) => {
-      this.isCounting = val;
-    });
-    this.buttonState$ = bcs.buttonState$;
-
-    this.ccs.isHolding$.subscribe((val) => {
-      this.isHolding = val;
-    });
-  }
-
-  formatLabel(value: number) {
-    switch (value) {
-      case 0:
-        return '1x';
-      case 1:
-        return '2x';
-      case 2:
-        return '10x';
-      case 3:
-        return '1000x';
-    }
-    return value;
-  }
-
-  onChangeRange(changeVal: number) {
-    switch (changeVal) {
-      case 0:
-        this.bcs.speedRateChanger(1);
-        break;
-      case 1:
-        this.bcs.speedRateChanger(2);
-        break;
-      case 2:
-        this.bcs.speedRateChanger(10);
-        break;
-      case 3:
-        this.bcs.speedRateChanger(1000);
-        break;
-    }
-    return changeVal;
-  }
-
-  beginCountdown(): void {
-    console.log(`before: ${this.isCounting} should say FALSE.`);
-    this.bcs.beginCountdown();
-    console.log(`after: ${this.isCounting} should say TRUE.`);
-  }
-  advanceOneHour(): void {
-    this.bcs.advanceOneHour();
-  }
-
-  hold(): void {
-    this.bcs.hold();
-  }
-  continueCountdown(): void {
-    this.bcs.continueCountdown();
-  }
-  abort(): void {
-    this.bcs.abort();
-    console.log(this.isCounting);
+  constructor(private readonly vps: ViewportService) {
+    this.viewport$ = vps.viewport$;
   }
 
   ngOnInit(): void {}

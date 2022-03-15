@@ -77,7 +77,7 @@ export class NasaAnnouncerService {
     const map = new Map<number, string>();
     map.set(
       a,
-      `Countdown Clock activated! Shuttle Test Director performs the traditional call to stations. Next event at 27 hours.`
+      `Countdown Clock activated! Shuttle Test Director performs the traditional call to stations. Begin final vehicle and facility close-outs for launch. Next event at 27 hours.`
     );
     ///
     map.set(
