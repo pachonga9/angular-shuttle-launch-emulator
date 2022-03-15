@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 import { AudienceService } from './audience.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { AudienceService } from './audience.service';
 export class AudienceComponent implements OnInit {
   public readonly audienceState$: Observable<string>;
   constructor(private readonly as: AudienceService) {
-    this.audienceState$ = this.as.reaction$;
+    this.audienceState$ = this.as.reaction$.pipe(
+      startWith('Click begin countdown to see audience reaction!')
+    );
   }
 
   ngOnInit(): void {}

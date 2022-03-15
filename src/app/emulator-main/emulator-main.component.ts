@@ -23,10 +23,10 @@ export class EmulatorMainComponent implements OnInit, OnDestroy {
     this.vps.viewport$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((val: ViewportSize) => {
-        console.log(val);
         if (val >= ViewportSize.MD) {
           this.isOpen = true;
-          console.log('jfkjhf');
+        } else {
+          this.isOpen = false;
         }
       });
   }

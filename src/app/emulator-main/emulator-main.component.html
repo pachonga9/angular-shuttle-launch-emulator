@@ -19,12 +19,11 @@
       class="bg-indigo-100"
       #controls
       [mode]="viewport <= ViewportSize.SM ? 'over' : 'side'"
-      [opened]="isOpen"
+      [(opened)]="isOpen"
     >
       <app-controls></app-controls>
     </mat-sidenav>
     <div class="p-4 h-full flex flex-col md:flex-row gap-4">
-      {{ isOpen }}
       <app-nasa-announcer class="md:flex-1"></app-nasa-announcer>
       <app-countdown-clock class="md:flex-1"></app-countdown-clock>
       <app-audience class="md:flex-1"></app-audience>
