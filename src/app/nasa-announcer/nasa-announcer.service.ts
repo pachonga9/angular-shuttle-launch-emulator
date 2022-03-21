@@ -77,43 +77,47 @@ export class NasaAnnouncerService {
     const map = new Map<number, string>();
     map.set(
       a,
-      `Countdown Clock activated! Shuttle Test Director performs the traditional call to stations. Begin final vehicle and facility close-outs for launch. Next event at 27 hours.`
+      `Countdown Clock activated! Shuttle Test Director performs the traditional call to stations. Begin final vehicle and facility close-outs for launch. Next event at T-27 hours.`
     );
     ///
     map.set(
       bHold,
-      `T-27 hours and holding. This will be the first built-in hold and typically will last for four hours. Press continue when ready to proceed.`
+      `T-27 hours and holding. This will be the first built-in hold and typically will last for four hours. Begin loading cryogenic propellants into orbiter's power reactant storage and distribution (PRSD) system. Press continue when ready to proceed.`
     );
     map.set(
       b,
-      `T-27 hours and counting. Begin operations to load cryogenic reactants into the orbiter's fuel cell storage tanks. Next event at 19 hours.`
+      `T-27 hours and counting. Begin operations to load cryogenic reactants into the orbiter's fuel cell storage tanks. Next event at T-19 hours.`
     );
     ///
     map.set(
       cHold,
-      `T-19 hours and holding. This built-in hold will typically last four hours. Press continue when ready to proceed.`
+      `T-19 hours and holding. This built-in hold will typically last four hours. Demate the orbiter's midbody umbilical unit.
+      Clean and vacuum crew module.
+      External tank nosecone purge. Press continue when ready to proceed.`
     );
     map.set(
       c,
-      `T-19 hours and counting. Begin final preparations of the orbiter's three main engines for main propellant tanking and flight. Next event at 11 hours.`
+      `T-19 hours and counting. Begin final preparations of the orbiter's three main engines for main propellant tanking and flight. Next event at T-11 hours.`
     );
     ///
     map.set(
       dHold,
-      `T-11 hours and holding. This built-in hold will typically last 13 hours. Press continue when ready to proceed.`
+      `T-11 hours and holding. This built-in hold will typically last 13 hours. Weather and engineering briefings. Pad debris inspection and closeout. Move rotating service structure to "park" position. Activate the orbiter's inertial measurement units and communications systems. Press continue when ready to proceed.`
     );
     map.set(
       d,
-      `T-11 hours and counting. Activate the orbiter's fuel cells. Clear the blast danger area of all nonessential personnel. Next event at 6 hours.`
+      `T-11 hours and counting. Activate the orbiter's fuel cells. Clear the blast danger area of all nonessential personnel. Next event at T-6 hours.`
     );
     ///
     map.set(
       eHold,
-      `T-6 hours and holding. This built-in hold lasts 2 about hours. Press continue when ready to proceed.`
+      `T-6 hours and holding. This built-in hold lasts 2 about hours. Mission Management Team and launch director receive weather update. Launch team verifies no violations of launch commit criteria before loading the external tank with propellants.
+      Clear pad of all personnel. Press continue when ready to proceed. 
+      `
     );
     map.set(
       e,
-      `T-6 hours and counting. Finish filling the external tank with its flight load of liquid hydrogen and liquid oxygen propellants. Next event at 3 hours.`
+      `T-6 hours and counting. Finish filling the external tank with its flight load of liquid hydrogen and liquid oxygen propellants. Next event at T-3 hours.`
     );
     ///
     map.set(
@@ -125,22 +129,22 @@ export class NasaAnnouncerService {
       `T-3 hours and counting. Check cockpit switch configurations.
       Astronauts perform air-to-ground voice checks with Launch Control (Kennedy Space Center) and Mission Control (Johnson Space Center).
       Close the orbiter's crew hatch and check for leaks.
-      Close-out crew retreats to fallback area. Next event at 20 minutes.`
+      Close-out crew retreats to fallback area. Next event at T-20 minutes.`
     );
     ///
     map.set(
       g,
-      `T-20 minutes and counting. Transition the orbiter's onboard computers to launch configuration. Start fuel cell thermal conditioning. Next Event at 9 minutes.`
+      `T-20 minutes and counting. Transition the orbiter's onboard computers to launch configuration. Start fuel cell thermal conditioning. Next event at T-9 minutes.`
     );
     ///
     map.set(
       h,
-      `T-9 minutes and counting. Start automatic ground launch sequencer. Next event at 7.5 minutes.`
+      `T-9 minutes and counting. Start automatic ground launch sequencer. Next event at T-7 minutes, 30 seconds.`
     );
     ///
     map.set(
       i,
-      `T-7 minutes 30 seconds and counting. Retract orbiter access arm. Next event at 5 minutes.`
+      `T-7 minutes 30 seconds and counting. Retract orbiter access arm. Next event at T-5 minutes.`
     );
     ///
     map.set(
